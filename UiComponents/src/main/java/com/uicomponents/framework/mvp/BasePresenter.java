@@ -8,7 +8,7 @@ package com.uicomponents.framework.mvp;
  * Presenter 只负责呈现的作用
  * </p>
  *
- * @author panxiangxing
+ * @author g0st、
  * @data 17/8/21
  */
 public abstract class BasePresenter<V extends BaseView, M> {

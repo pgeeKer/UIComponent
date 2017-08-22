@@ -1,9 +1,11 @@
 package com.uicomponents.framework.fragment;
 
+import android.annotation.TargetApi;
 import android.arch.lifecycle.LifecycleRegistry;
 import android.arch.lifecycle.LifecycleRegistryOwner;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,7 +23,7 @@ import java.lang.reflect.Field;
  * fragment 负责数据的调度和生命周期的规范
  * </p>
  *
- * @author panxiangxing
+ * @author g0st、
  * @data 17/8/21
  */
 public abstract class BaseFragment extends Fragment implements LifecycleRegistryOwner {
@@ -98,6 +100,7 @@ public abstract class BaseFragment extends Fragment implements LifecycleRegistry
         return false;
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     public void onDetach() {
         super.onDetach();
@@ -106,9 +109,7 @@ public abstract class BaseFragment extends Fragment implements LifecycleRegistry
             Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
             childFragmentManager.setAccessible(true);
             childFragmentManager.set(this, null);
-        } catch (NoSuchFieldException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
+        } catch (NoSuchFieldException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }

@@ -1,5 +1,6 @@
 package com.uicomponents.framework.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -71,5 +72,13 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (fragment != null) {
+            fragment.onNewIntent(intent);
+        }
     }
 }
