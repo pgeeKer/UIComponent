@@ -34,4 +34,10 @@ dependencies {
     compile "android.arch.lifecycle:runtime:1.0.0-alpha9"
     compile "android.arch.lifecycle:extensions:1.0.0-alpha9"
     annotationProcessor "android.arch.lifecycle:compiler:1.0.0-alpha9"
+
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'com.squareup.okhttp3:okhttp:3.7.0'
+    compile 'com.facebook.stetho:stetho:1.4.2'
+    compile 'com.facebook.stetho:stetho-okhttp3:1.4.2'
 }
