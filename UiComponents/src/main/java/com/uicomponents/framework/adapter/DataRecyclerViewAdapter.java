@@ -4,8 +4,6 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.List;
 
-import lombok.Getter;
-
 /**
  * RecyclerView adapter 数据基类
  *
