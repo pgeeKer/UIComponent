@@ -1,7 +1,5 @@
 package com.uicomponents.http.response;
 
-import lombok.Data;
-
 /**
  * 所有从服务器获取数据的父类
  * 包含请求失败返回的数据项
@@ -11,7 +9,6 @@ import lombok.Data;
  * @author panxiangxing
  * @data 17/1/2
  */
-@Data
 public class CommonResponse {
     /**
      * 状态码
@@ -22,6 +19,22 @@ public class CommonResponse {
      * 请求返回的提示信息
      */
     private String info;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
 
     public boolean isSuccess() {
         return status == 0;

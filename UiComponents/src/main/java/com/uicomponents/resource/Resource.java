@@ -3,15 +3,12 @@ package com.uicomponents.resource;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import lombok.Getter;
-
 /**
  * 描述数据状态
  *
  * @author g0st、
  * @data 17/8/27
  */
-@Getter
 public class Resource<T> {
 
     public enum Status {
@@ -26,6 +23,18 @@ public class Resource<T> {
         this.data = data;
         this.status = status;
         this.message = message;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public String getMessage() {
+        return message;
     }
 
     public static <T> Resource<T> localLoading(@Nullable T data) {

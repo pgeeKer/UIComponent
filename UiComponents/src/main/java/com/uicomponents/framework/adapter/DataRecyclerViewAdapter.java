@@ -13,7 +13,11 @@ import lombok.Getter;
  */
 public abstract class DataRecyclerViewAdapter<VH extends RecyclerView.ViewHolder, M> extends RecyclerView.Adapter<VH> {
 
-    @Getter private List<M> dataModelList;
+    private List<M> dataModelList;
+
+    public List<M> getDataModelList() {
+        return dataModelList;
+    }
 
     @Override
     public int getItemCount() {
