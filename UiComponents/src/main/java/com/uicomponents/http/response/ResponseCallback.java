@@ -1,6 +1,7 @@
-package com.uicomponents.http;
+package com.uicomponents.http.response;
 
 import com.google.gson.JsonParseException;
+import com.uicomponents.http.RHttp;
 
 import java.io.IOException;
 
@@ -16,7 +17,7 @@ import retrofit2.Retrofit;
  * @data 17/1/2
  */
 
-public abstract class PocketNoteCallback<T> implements Callback<T> {
+public abstract class ResponseCallback<T> implements Callback<T> {
 
     /**
      * 请求成功的回调
@@ -52,12 +53,7 @@ public abstract class PocketNoteCallback<T> implements Callback<T> {
             }
         }
 
-        CommonResponse commonResponse = parseMessageFromResponse(response);
-        if (commonResponse == null) {
-            failure(0, "服务器异常，请稍后重试!");
-        } else {
-            failure(commonResponse.getStatus(), commonResponse.getInfo());
-        }
+        failure(response.code(), "服务器异常，请稍后重试!");
     }
 
     @Override
@@ -67,18 +63,5 @@ public abstract class PocketNoteCallback<T> implements Callback<T> {
             return;
         }
         failure(0, "请检查您的网络连接...");
-    }
-
-    private CommonResponse parseMessageFromResponse(Response<T> response) {
-        if (response.isSuccessful()) {
-            return (CommonResponse) response.body();
-        }
-        Retrofit retrofit = RestDataSource.getRetrofitInstance();
-        try {
-            return (CommonResponse) retrofit.responseBodyConverter(CommonResponse.class,
-                CommonResponse.class.getAnnotations()).convert(response.errorBody());
-        } catch (IOException ignored) {
-        }
-        return null;
     }
 }
