@@ -8,7 +8,7 @@ Step 1
     	allprojects {
 		repositories {
 			...
-                        maven { url 'https://maven.google.com' }
+                    maven { url 'https://maven.google.com' }
 			maven { url 'https://jitpack.io' }
 		}
 	}
