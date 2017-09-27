@@ -1,14 +1,10 @@
 package com.uicomponents.http.response;
 
 import com.google.gson.JsonParseException;
-import com.uicomponents.http.RHttp;
-
-import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 /**
  * 自定义的Retrofit Callback
@@ -47,7 +43,7 @@ public abstract class ResponseCallback<T> implements Callback<T> {
             }
 
             CommonResponse commonResponse = (CommonResponse) response.body();
-            if (commonResponse.getStatus() == 1) {
+            if (commonResponse.getStatusCode() == 1) {
                 success(response.body());
                 return;
             }

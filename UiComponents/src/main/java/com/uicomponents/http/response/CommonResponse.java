@@ -13,19 +13,19 @@ public class CommonResponse {
     /**
      * 状态码
      */
-    private int status;
+    private int statusCode;
 
     /**
      * 请求返回的提示信息
      */
     private String info;
 
-    public int getStatus() {
-        return status;
+    public int getStatusCode() {
+        return statusCode;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
     }
 
     public String getInfo() {
@@ -37,6 +37,6 @@ public class CommonResponse {
     }
 
     public boolean isSuccess() {
-        return status == 0;
+        return statusCode == 0;
     }
 }
