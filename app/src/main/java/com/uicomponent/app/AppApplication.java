@@ -4,7 +4,8 @@ import android.app.Application;
 
 import com.uicomponents.http.RHttp;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author g0st、
@@ -12,10 +13,15 @@ import java.util.Arrays;
  */
 public class AppApplication extends Application {
 
+    List<Class> classList = new ArrayList<>();
+
     @Override
     public void onCreate() {
         super.onCreate();
 
-        RHttp.init("", true, Arrays.asList(MainActivity.class));
+        classList.add(MainActivity.class);
+        classList.add(Application.class);
+
+        RHttp.init("", true, classList);
     }
 }

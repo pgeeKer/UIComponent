@@ -21,7 +21,7 @@ public final class RHttp {
 
     private RHttp() {}
 
-    public static <T> void init(String baseUrl, boolean isRelease, List<Class<T>> clazz) {
+    public static void init(String baseUrl, boolean isRelease, List<Class> clazz) {
         initRetrofit(baseUrl, isRelease, clazz);
     }
 
@@ -36,7 +36,7 @@ public final class RHttp {
         throw new RuntimeException("Could not find " + clazz.getSimpleName());
     }
 
-    private static <T> void initRetrofit(String baseUrl, boolean isRelease, List<Class<T>> clazz) {
+    private static void initRetrofit(String baseUrl, boolean isRelease, List<Class> clazz) {
         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
         if (!isRelease) {
             clientBuilder.addNetworkInterceptor(new StethoInterceptor());
