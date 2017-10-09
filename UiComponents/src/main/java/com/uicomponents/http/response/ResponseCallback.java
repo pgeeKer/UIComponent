@@ -29,6 +29,11 @@ public abstract class ResponseCallback<T> implements Callback<T> {
     @SuppressWarnings("unused")
     public void failure(int errorCode, String msg) {}
 
+    /**
+     * 服务器响应，如果服务器出现异常，返回的 statusCode -1
+     * @param call
+     * @param response
+     */
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
         if (response.isSuccessful()) {
@@ -43,7 +48,7 @@ public abstract class ResponseCallback<T> implements Callback<T> {
             }
 
             CommonResponse commonResponse = (CommonResponse) response.body();
-            if (commonResponse.getStatusCode() == 1) {
+            if (commonResponse.getStatusCode() == 0) {
                 success(response.body());
                 return;
             }
